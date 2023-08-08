@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNews Post</title>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="j2c.min.js">
+    <style type="text/css">
+        body{
+            padding: 0;
+            margin: 0;
+        }
+        .main{
+            position: relative;
+            width: 614px;
+            height: 700px;
+        }
+        #bg{
+            position: absolute;
+            height: 700px;
+            width: 614px;
+        }
+        .text{
+            font-family: "Times New Roman", Times, serif;
+            font-size: 27px;
+            line-height: 28px;
+            font-weight: bold;
+            position: absolute;
+            color: rgb(255 255 255);
+            white-space: pre-line;
+            text-align: justify;
+            width: 542px;
+            top:8%;
+            left:6%;
+            line-height: 1.8em;
+        }
+        #bg{
+            height: 700px;
+            width: 614px;
+        }
+        .download{
+            margin: 2.5rem;
+            width: 100vw;
+            justify-content: center;
+            display:flex;
+            align-items: center;
+
+        }
+    </style>
+</head>
+<body>
+    <div  class="main" id="container">
+        <img id="bg" src="" alt="Image Not Load">
+        <span class="text" id="News"> {{News|safe}}</span>
+    </div>
+    <div id="canvasWrapper" class="download">
+        <button class="text-white p-3 rounded-md font-sons text-xl bg-gradient-to-r
+        from-green-400 to-blue-500 hover:from-pink hover:to-yellow-500" onclick="download()">Download Post</button>
+    </div>
+
+    <script>
+        var newbg=document.getElementById("bg");
+        var background=new Image();
+        background.src="/static/Image/" + (Math.floor(Math.random() * (9))+1)+".jpg";
+        newbg.src=background.src;
+    </script>
+
+    <script src="/static/js/j2c.min.js"></script>
+
+    <script>
+        function download(){
+            html2canvas(document.getElementById("container"),{height: 700,width: 614}).then(canvas =>{
+                var a=document.createElement('a');
+                a.href=canvas.toDataURL("Image/jpg").replace("Image/jpg","image/octet-stream");
+                a.download="AnandDollar.jpg";
+                a.click();
+            });
+        }
+    </script>
+    
+</body>
+</html>
