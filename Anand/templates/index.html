@@ -63,7 +63,7 @@
     <script>
         var newbg=document.getElementById("bg");
         var background=new Image();
-        background.src="/static/Image/" + (Math.floor(Math.random() * (9))+1)+".jpg";
+        background.src="/static/Image/" + (Math.floor(Math.random() * (4))+1)+".jpg";
         newbg.src=background.src;
     </script>
 
@@ -74,7 +74,7 @@
             html2canvas(document.getElementById("container"),{height: 700,width: 614}).then(canvas =>{
                 var a=document.createElement('a');
                 a.href=canvas.toDataURL("Image/jpg").replace("Image/jpg","image/octet-stream");
-                a.download="AnandDollar.jpg";
+                a.download="AnandDollar.png";
                 a.click();
             });
         }
